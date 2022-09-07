@@ -1,0 +1,35 @@
+def factoring_function():
+  print('Enter the following in the form ax^2+bx+c')
+  a=float(input('a = '))
+  b= float(input('b = '))
+  c = float(input('c = '))
+
+
+  gcdTemp = gcdCalcFunc(a,b)
+  print("gcdTemp="+str(gcdTemp))
+  gcd = gcdCalcFunc(gcdTemp,c)
+
+  if c==0:
+    print(str(gcd)+"x("+str(a/gcd)+"x + "+str(b/gcd)+")")
+
+  else:
+    sol1Num = -b+((b**2)-(4*a*c))**(1/2)
+    sol2Num = -b-((b**2)-(4*a*c))**(1/2)
+    denom = 2*a
+
+    if not (sol1Num.is_integer() and sol2Num.is_integer()) or not denom.is_integer(): print('Does Not factor cleanly)')
+
+    else:
+      sol1GCD = gcdCalcFunc(sol1Num, denom)
+      sol2GCD = gcdCalcFunc(sol2Num, denom)
+
+      sol1Num = -sol1Num/sol1GCD
+      sol1Denom = denom/sol1GCD
+      sol2Num = -sol2Num/sol2GCD
+      sol2Denom = denom/sol2GCD
+      print ('math done successfully')
+      print("gcd="+str(gcd))
+      print(str(gcd*a/abs(a))+"("+str(sol1Denom)+"x + "+str(sol1Num)+")("+str(sol2Denom)+"x + "+str(sol2Num)+")")
+
+
+	
